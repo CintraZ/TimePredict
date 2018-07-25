@@ -81,7 +81,7 @@ def train(model, param_file,validate=True):
         model.train()
         for root, dirs, files in os.walk(trainDir):
             for n, file in enumerate(files):
-                # print('train on file: {}'.format(root + '\\' + file))
+                print('train on file: {}'.format(root + '\\' + file))
                 trainDataSet = TimeDataSet.TimeDataSet(file, root, predict=False)
                 trainLoader = DataLoader(trainDataSet, batch_size=batch_size, shuffle=True)
                 for i, (x1, x2, x3, x4, x5, x6, x7, time) in enumerate(trainLoader):
@@ -157,25 +157,25 @@ def train(model, param_file,validate=True):
             plt.plot(epoch_list, val_loss_list, color='red')
         # plt.ioff()
         plt.pause(0.05)
-    # plt.savefig('loss.png')
+    plt.savefig('loss.png')
     # plt.show()
 
-    print('after 1 epoch:')
-    params = model.state_dict()
-    print('embedding weights')
-    for attr, in_dim, out_dim in embeds_dims:
-        print('  {}_em weight : {}'.format(attr, params[attr+'_em.weight']))
-
-    print('fc1 weight: {}'.format(params['net.fc1.weight']))
-    print('fc1 bias: {}'.format(params['net.fc1.bias']))
-    # print('bn1 weight: {}'.format(params['net.fc1.weight']))
-    # print('bn1 bias mean: {}'.format(params['net.bn1.running_mean']))
-    print('fc2 weight: {}'.format(params['net.fc2.weight']))
-    print('fc2 bias: {}'.format(params['net.fc2.bias']))
-    print('fc3 weight: {}'.format(params['net.fc3.weight']))
-    print('fc3 bias: {}'.format(params['net.fc3.bias']))
-    print('fc4 weight: {}'.format(params['net.fc4.weight']))
-    print('fc4 bias: {}'.format(params['net.fc4.bias']))
+    # print('after 1 epoch:')
+    # params = model.state_dict()
+    # print('embedding weights')
+    # for attr, in_dim, out_dim in embeds_dims:
+    #     print('  {}_em weight : {}'.format(attr, params[attr+'_em.weight']))
+    #
+    # print('fc1 weight: {}'.format(params['net.fc1.weight']))
+    # print('fc1 bias: {}'.format(params['net.fc1.bias']))
+    # # print('bn1 weight: {}'.format(params['net.fc1.weight']))
+    # # print('bn1 bias mean: {}'.format(params['net.bn1.running_mean']))
+    # print('fc2 weight: {}'.format(params['net.fc2.weight']))
+    # print('fc2 bias: {}'.format(params['net.fc2.bias']))
+    # print('fc3 weight: {}'.format(params['net.fc3.weight']))
+    # print('fc3 bias: {}'.format(params['net.fc3.bias']))
+    # print('fc4 weight: {}'.format(params['net.fc4.weight']))
+    # print('fc4 bias: {}'.format(params['net.fc4.bias']))
 
 
 #  Test
@@ -212,22 +212,22 @@ if __name__ == '__main__':
     model = Net.TimePredict.Net(num_classes).to(device)
 
     # Print initial weights
-    print('init weights:')
-    params = model.state_dict()
-    print('embedding weights')
-    for attr, in_dim, out_dim in embeds_dims:
-        print('  {}_em weight : {}'.format(attr, params[attr+'_em.weight']))
-
-    print('fc1 weight: {}'.format(params['net.fc1.weight']))
-    print('fc1 bias: {}'.format(params['net.fc1.bias']))
-    # print('bn1 weight: {}'.format(params['net.fc1.weight']))
-    # print('bn1 bias mean: {}'.format(params['net.bn1.running_mean']))
-    print('fc2 weight: {}'.format(params['net.fc2.weight']))
-    print('fc2 bias: {}'.format(params['net.fc2.bias']))
-    print('fc3 weight: {}'.format(params['net.fc3.weight']))
-    print('fc3 bias: {}'.format(params['net.fc3.bias']))
-    print('fc4 weight: {}'.format(params['net.fc4.weight']))
-    print('fc4 bias: {}'.format(params['net.fc4.bias']))
+    # print('init weights:')
+    # params = model.state_dict()
+    # print('embedding weights')
+    # for attr, in_dim, out_dim in embeds_dims:
+    #     print('  {}_em weight : {}'.format(attr, params[attr+'_em.weight']))
+    #
+    # print('fc1 weight: {}'.format(params['net.fc1.weight']))
+    # print('fc1 bias: {}'.format(params['net.fc1.bias']))
+    # # print('bn1 weight: {}'.format(params['net.fc1.weight']))
+    # # print('bn1 bias mean: {}'.format(params['net.bn1.running_mean']))
+    # print('fc2 weight: {}'.format(params['net.fc2.weight']))
+    # print('fc2 bias: {}'.format(params['net.fc2.bias']))
+    # print('fc3 weight: {}'.format(params['net.fc3.weight']))
+    # print('fc3 bias: {}'.format(params['net.fc3.bias']))
+    # print('fc4 weight: {}'.format(params['net.fc4.weight']))
+    # print('fc4 bias: {}'.format(params['net.fc4.bias']))
 
     # loss and optimizer
     # criterion = LossFunction.LossFunction()
