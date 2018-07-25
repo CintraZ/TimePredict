@@ -6,6 +6,8 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="Net.TimePredict.math" />
+          <option value="torch.from_numpy" />
+          <option value="torch.squeeze" />
         </list>
       </option>
     </inspection_tool>

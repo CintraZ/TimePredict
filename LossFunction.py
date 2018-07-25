@@ -1,5 +1,8 @@
 import torch
+import utils
 import torch.nn as nn
+
+EPS = 10
 
 
 class LossFunction(nn.Module):
@@ -9,6 +12,8 @@ class LossFunction(nn.Module):
         return
 
     def forward(self, predict, label):
-        loss = torch.abs(predict - label) / (label + 10)
+        predict = utils.unnormalize(predict)
+        label = utils.unnormalize(label)
+        loss = torch.abs(predict - label) / (label + EPS)
 
         return loss.mean()
