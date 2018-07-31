@@ -9,6 +9,6 @@ class L2Loss(nn.Module):
         return
 
     def forward(self, predict, label):
-        loss = pow(predict - label, 2)
+        loss = (predict - label)**2
 
         return loss.mean()

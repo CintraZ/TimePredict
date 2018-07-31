@@ -38,9 +38,9 @@ class TimeDataSet(Dataset):
 
     def __getitem__(self, index):
         if not self.predict:
-            rt_time = self.data[index][5]
+            rt_time = self.data[index][4]
             rt_data = self.data[index]
-            rt_data = np.delete(rt_data, [0, 5])
+            rt_data = np.delete(rt_data, [4])
             for i, dt in enumerate(rt_data):
                 if i == 0 or i == 1:
                     rt_data[i] = dictList[i][rt_data[i]]
@@ -52,7 +52,7 @@ class TimeDataSet(Dataset):
             #     self.datadict[attr_list[i]] = rt_data[i]
             # self.datadict['label'] = rt_time
             # return self.datadict
-            return rt_data[0],rt_data[1],rt_data[2],rt_data[3],rt_data[4],rt_data[5],rt_data[6], rt_time
+            return rt_data[0], rt_data[1], rt_data[2], rt_data[3], rt_data[4],rt_data[5],rt_data[6], rt_time
         else:
             rt_data = np.delete(self.data, [0])
             rt_data = torch.from_numpy(rt_data)

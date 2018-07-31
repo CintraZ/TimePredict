@@ -5,9 +5,9 @@ import torch.nn as nn
 EPS = 10
 
 
-class LossFunction(nn.Module):
+class MAPELoss(nn.Module):
     def __init__(self):
-        super(LossFunction, self).__init__()
+        super(MAPELoss, self).__init__()
 
         return
 
